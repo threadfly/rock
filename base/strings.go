@@ -1,0 +1,17 @@
+package base
+
+import (
+	"unsafe"
+)
+
+func StringToBytes(s string) []byte {
+	sp := (*[2]uintptr)(unsafe.Pointer(&s))
+	btp := [3]uintptr{sp[0], sp[1], sp[1]}
+	return *(*[]byte)(unsafe.Pointer(&btp))
+}
+
+func BytesToString(bytes []byte) string {
+	sp := (*[3]uintptr)(unsafe.Pointer(&bytes))
+	btp := [2]uintptr{sp[0], sp[1]}
+	return *(*string)(unsafe.Pointer(&btp))
+}
