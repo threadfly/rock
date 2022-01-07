@@ -1,5 +1,5 @@
 module rock
 
-go 1.13
+go 1.16
 
 require github.com/go-zookeeper/zk v1.0.2
